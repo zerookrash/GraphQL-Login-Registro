@@ -10,7 +10,6 @@ import chalk from 'chalk'
 
 if (process.env.NODE_ENV !== 'production') {
   const envs = enviroments
-  console.log(envs)
 }
 
 async function init() {

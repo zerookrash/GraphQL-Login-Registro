@@ -45,7 +45,10 @@ const query : IResolvers = {
                 message: `Token Correcto \u{2705}`,
                 user: info.user
             }
-        }
+        },
+        async productos (_: void, __: any, { db }): Promise<any> {
+            return await db.collection('productos').find().toArray();
+        },
     }
 }
 

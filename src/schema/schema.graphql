@@ -1,15 +1,19 @@
- type Query {
+type Query {
     # Obtenemos la lista de usuarios
     users: [User!]!
     # Inicio de sesión en el sistema
     login(email: String!, password: String!): ResulToken!
     # Obtenemos informacion con el token
     me: ResulUser!
+    # Obtenemos la lista de productos
+    productos: [producto!]!
 }
 
 type Mutation {
     # Registro de usuarios en el sistema
     register(user: UserInput): ResulUser!
+    # Registrar productos
+    addProduct(producto: productoInput): ResulProducto!
 }
 
 type User {
@@ -17,15 +21,31 @@ type User {
     name: String!
     lastname: String!
     email: String!
+    telefono: String!
+    usuario: String!
+    nombreNegocio: String
     password: String
     registerDate: String!
+
+    dirEnvio: [envio]!
+    productos: [producto]!
+    ventas: [ventas]!
+    clientes: [User]!
 }
 
 input UserInput {
     name: String!
     lastname: String!
     email: String!
+    telefono: String!
+    usuario: String!
+    nombreNegocio: String
     password: String!
+
+    dirEnvio: [envioInput]!
+    productos: [productoInput]!
+    ventas: [ventasInput]!
+    clientes: [UserInput]!
 }
 
 type ResulUser {
@@ -38,4 +58,61 @@ type ResulToken {
     status: Boolean!
     message: String!
     token: String
+}
+
+type envio {
+    linea1: String!
+    linea2: String
+    col: String!
+    estado: String!
+    codigoPostal: String!
+}
+
+input envioInput {
+    linea1: String!
+    linea2: String
+    col: String!
+    estado: String!
+    codigoPostal: String!
+}
+
+type producto {
+    id: ID!
+    nombre: String!
+    descripcion: String!
+    status: String!
+    stock: String!
+    imgs: String!
+    precio: String!
+    registerDate: String!
+}
+
+input productoInput {
+    nombre: String!
+    descripcion: String!
+    status: String!
+    stock: String!
+    imgs: String!
+    precio: String!
+}
+
+type ResulProducto {
+    status: Boolean!
+    message: String!
+    user: User!
+    producto: producto
+}
+
+type ventas {
+    nomCliente: String!
+    dirEnvio: [envio]!
+    producto: [producto]!
+    precio: String
+}
+
+input ventasInput {
+    nomCliente: String!
+    dirEnvio: [envioInput]!
+    producto: [productoInput]!
+    precio: String
 }

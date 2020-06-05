@@ -4,7 +4,8 @@ import chalk from 'chalk';
 class Database {
     async init() {
         const MONGODB = String(process.env.DABASE);
-        const client = await MongoClient.connect(MONGODB, { useNewUrlParser: true });
+        // const client = await MongoClient.connect(MONGODB, { useNewUrlParser: true });
+        const client = await MongoClient.connect(MONGODB, { useUnifiedTopology: true });
 
         const db = await client.db();
 
