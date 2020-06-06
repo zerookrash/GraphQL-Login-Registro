@@ -17,7 +17,7 @@
   "author": "Mario Villela<mario.villelalarraza@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "apollo-server-express": "^2.6.7",
+    "apollo-server-express": "^2.14.2",
     "bcryptjs": "^2.4.3",
     "chalk": "^4.0.0",
     "compression": "^1.7.4",
