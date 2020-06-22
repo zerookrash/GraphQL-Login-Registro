@@ -7,6 +7,8 @@ type Query {
     me: ResulUser!
     # Obtenemos la lista de productos
     productos: [producto!]!
+    # TODO: Avatar
+    
 }
 
 type Mutation {
@@ -14,10 +16,13 @@ type Mutation {
     register(user: UserInput): ResulUser!
     # Registrar productos
     addProduct(producto: productoInput): ResulProducto!
+    # Subirda de imagenes
 }
 
+# USUARIOS
 type User {
     id: ID!
+    avatar: String
     name: String!
     lastname: String!
     email: String!
@@ -34,6 +39,7 @@ type User {
 }
 
 input UserInput {
+    avatar: String
     name: String!
     lastname: String!
     email: String!
@@ -54,18 +60,18 @@ type ResulUser {
     user: User
 }
 
-type ResulToken {
-    status: Boolean!
-    message: String!
-    token: String
-}
-
 type envio {
     linea1: String!
     linea2: String
     col: String!
     estado: String!
     codigoPostal: String!
+}
+
+type ResulToken {
+    status: Boolean!
+    message: String!
+    token: String
 }
 
 input envioInput {
@@ -75,7 +81,9 @@ input envioInput {
     estado: String!
     codigoPostal: String!
 }
+# USUARIOS
 
+# PRODUCTOS
 type producto {
     id: ID!
     nombre: String!
@@ -116,3 +124,9 @@ input ventasInput {
     producto: [productoInput]!
     precio: String
 }
+# PRODUCTOS
+# UPLOAD
+
+
+
+# UPLOAD

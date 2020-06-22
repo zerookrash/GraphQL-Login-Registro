@@ -5,7 +5,7 @@ import schema from './schema'
 import { ApolloServer } from 'apollo-server-express'
 import { createServer } from 'http'
 import enviroments from './config/enviroment'
-import Database from './config/database';
+import Database from './config/database'
 import chalk from 'chalk'
 
 if (process.env.NODE_ENV !== 'production') {
